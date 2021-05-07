@@ -4,13 +4,15 @@
   "description": "Graph API Webhooks Sample",
   "main": "index.js",
   "scripts": {
-    "start": "node heroku/index.js"
+    "start": "node heroku/index.js", 
+    "dev": "nodemon heroku/index.js"
   },
   "dependencies": {
     "axios": "^0.21.1",
     "body-parser": "~1.15.0",
     "express": "~4.13.3",
-    "express-x-hub": "^1.0.4"
+    "express-x-hub": "^1.0.4",
+    "nodemon": "^2.0.7"
   },
   "engines": {
     "node": "0.12.7"
