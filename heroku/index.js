@@ -10,6 +10,7 @@ var bodyParser = require('body-parser');
 var express = require('express');
 var app = express();
 var xhub = require('express-x-hub');
+const axios = require('axios');
 
 app.set('port', (process.env.PORT || 5000));
 app.listen(app.get('port'));
@@ -48,6 +49,19 @@ app.post('/facebook', function(req, res) {
   console.log('request header X-Hub-Signature validated');
   // Process the Facebook updates here
   received_updates.unshift(req.body);
+  //Post to webhook
+axios.post('https://fbf9f2d7c80bcd2f4aeec228431159c5.m.pipedream.net', {
+  todo: received_updates
+})
+.then(res => {
+  console.log(`statusCode: ${res.statusCode}`)
+  console.log(res)
+})
+.catch(error => {
+  console.error(error)
+})
+//
+
   res.sendStatus(200);
 });
 
