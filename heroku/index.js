@@ -20,7 +20,7 @@ app.use(xhub({ algorithm: 'sha1', secret: process.env.APP_SECRET }));
 
 app.use(bodyParser.json());
 
-// app.use(express.json());
+//app.use(express.json());
 // app.use(express.urlencoded({ extended: false }));
 
 var token = process.env.TOKEN || 'token';
@@ -57,7 +57,7 @@ app.post("/facebook", function (req, res) {
   received_updates.unshift(req.body);
   axios
     .post("https://fbf9f2d7c80bcd2f4aeec228431159c5.m.pipedream.net", {
-      todo: JSON.parse(received_updates),
+      todo: 'Test sháhậhskáhak',
     })
     .then((res) => {
       console.log(`statusCode: ${res.statusCode}`);
