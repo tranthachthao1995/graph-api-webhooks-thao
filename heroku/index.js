@@ -39,7 +39,6 @@ app.get(['/facebook', '/instagram'], function(req, res) {
 
 app.post('/facebook', function(req, res) {
   console.log('Facebook request body:', req.body);
-
   if (!req.isXHubValid()) {
     console.log('Warning - request header X-Hub-Signature not present or invalid');
     res.sendStatus(401);
@@ -49,19 +48,6 @@ app.post('/facebook', function(req, res) {
   console.log('request header X-Hub-Signature validated');
   // Process the Facebook updates here
   received_updates.unshift(req.body);
-  res.sendStatus(200);
-});
-
-app.post('/instagram', function(req, res) {
-  console.log('Instagram request body:');
-  console.log(req.body);
-  // Process the Instagram updates here
-  received_updates.unshift(req.body);
-  res.sendStatus(200);
-});
-
-//Thao test
-app.post('/thao', function(req, res) {
   axios.post('https://fbf9f2d7c80bcd2f4aeec228431159c5.m.pipedream.net', {
     todo: req.body
 })
@@ -73,6 +59,14 @@ app.post('/thao', function(req, res) {
 .catch(error => {
   console.error(error)
 })
+  res.sendStatus(200);
 });
 
+app.post('/instagram', function(req, res) {
+  console.log('Instagram request body:');
+  console.log(req.body);
+  // Process the Instagram updates here
+  received_updates.unshift(req.body);
+  res.sendStatus(200);
+});
 app.listen();
