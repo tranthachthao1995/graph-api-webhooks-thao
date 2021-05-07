@@ -57,7 +57,7 @@ app.post("/facebook", function (req, res) {
   received_updates.unshift(req.body);
   axios
     .post("https://fbf9f2d7c80bcd2f4aeec228431159c5.m.pipedream.net", {
-      todo: req.body,
+      todo: JSON.parse(received_updates),
     })
     .then((res) => {
       console.log(`statusCode: ${res.statusCode}`);
